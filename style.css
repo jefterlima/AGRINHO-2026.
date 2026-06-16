@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. VARIÁVEIS, RESETS E ESTILOS GERAIS
-   ========================================================================== */
 :root {
     --primary: #2e7d32;
     --primary-dark: #1b5e20;
@@ -29,7 +26,7 @@ body {
     background-color: var(--light);
     color: var(--dark);
     line-height: 1.6;
-    padding-top: 80px; /* Evita que o topo suma sob o menu fixo */
+    padding-top: 80px;
 }
 
 .container {
@@ -40,24 +37,21 @@ body {
 }
 
 section {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
-/* ==========================================================================
-   2. COMPONENTES REUTILIZÁVEIS (BOTÕES, TÍTULOS E CARDS)
-   ========================================================================== */
+/* Títulos e Botões */
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
     color: var(--primary-dark);
-    position: relative;
 }
 
 .section-title::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 50px;
     height: 4px;
     background-color: var(--accent);
     margin: 10px auto 0;
@@ -68,7 +62,7 @@ section {
     display: inline-block;
     background-color: var(--primary);
     color: var(--white);
-    padding: 12px 30px;
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -76,167 +70,37 @@ section {
     font-weight: bold;
     transition: var(--transition);
     text-decoration: none;
-    text-align: center;
 }
 
 .btn:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+/* Layout em Grid e Flexbox */
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: var(--white);
-    padding: 30px;
+    padding: 25px;
     border-radius: 8px;
     box-shadow: var(--shadow);
-    text-align: center;
-    transition: var(--transition);
-    border-top: 4px solid transparent;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border-top-color: var(--primary);
-}
-
-.card i {
-    font-size: 3rem;
-    color: var(--primary);
-    margin-bottom: 20px;
+    border-top: 4px solid var(--primary);
 }
 
 .card h3 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--primary-dark);
-}
-
-/* ==========================================================================
-   3. CABEÇALHO E MENU DE NAVEGAÇÃO
-   ========================================================================== */
-header {
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    position: relative;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    transition: var(--transition);
-    padding: 5px 0;
-    position: relative;
-}
-
-.nav-menu a:hover, 
-.nav-menu a.active {
-    color: var(--primary);
-}
-
-/* Linha decorativa no hover do menu */
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary);
-    transition: var(--transition);
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--primary);
-    background: none;
-    border: none;
-}
-
-/* ==========================================================================
-   4. HERO BANNER
-   ========================================================================== */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover;
-    height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--white);
-}
-
-.hero-content {
-    width: 100%;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    animation: fadeIn Down 1s ease-out;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 1.5s ease-out;
-}
-
-/* ==========================================================================
-   5. SEÇÕES ESPECÍFICAS (SUSTENTABILIDADE E DESAFIOS)
-   ========================================================================== */
-.sustainable-section {
-    background-color: var(--white);
 }
 
 .split-container {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
@@ -247,80 +111,165 @@ header {
 
 .split-image img {
     width: 100%;
-    height: auto;
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    object-fit: cover;
-}
-
-.split-text h3 {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.split-text ul {
-    list-style: none;
-    margin-top: 15px;
+    box-shadow: var(--shadow);
 }
 
 .split-text li {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin: 10px 0;
+    list-style-type: "✓ ";
+    padding-left: 5px;
+    color: var(--dark);
 }
 
-/* Marcador verde personalizado para listas */
-.split-text li::before {
-    content: "✓";
+/* Menu de Navegação Superior */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
     color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+    color: var(--primary);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary);
+}
+
+/* Banner Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* Caixas Dinâmicas e Formulários */
+.bg-dark-section {
+    background-color: #e8f5e9;
+    padding: 40px 20px;
+    border-radius: 8px;
+}
+
+.interactive-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
-.bg-dark-section {
-    background-color: #e0f2f1; /* Tom verde-água bem leve */
-}
-
-.danger-card {
-    border-top: 4px solid var(--danger);
-}
-
-.danger-card i {
-    color: var(--danger);
-}
-
-/* ==========================================================================
-   6. CAIXAS INTERATIVAS (QUIZ, CALCULADORAS E FORMULÁRIOS)
-   ========================================================================== */
-.interactive-box {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-top: 30px;
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .quiz-option {
     display: block;
+    width: 100%;
     background: var(--light);
-    padding: 15px;
-    margin: 12px 0;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    text-align: left;
     cursor: pointer;
     transition: var(--transition);
-    border: 1px solid #ddd;
-    font-weight: 500;
 }
 
 .quiz-option:hover {
-    background: var(--secondary);
-    color: var(--white);
-    border-color: var(--secondary);
-    transform: translateX(5px);
+    background-color: #cfd8dc;
 }
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
+/* Classes Injetadas pelo JavaScript */
+.animar-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
 }
+
+.elemento-visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Celular (Responsividade) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .nav-menu.menu-ativo {
+        display: flex;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
