@@ -1,354 +1,111 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroSustentável | O Futuro do Campo</title>
-    <!-- Ícones FontAwesome para Recursos Multimídia -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        /* --- ESTILOS GERAIS (CSS) --- */
-        :root {
-            --primary: #2e7d32;
-            --primary-dark: #1b5e20;
-            --secondary: #81c784;
-            --accent: #ffb74d;
-            --dark: #212121;
-            --light: #f5f5f5;
-            --white: #ffffff;
-            --danger: #e53935;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--primary-dark);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* --- CABEÇALHO E MENU --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* --- BANNER PRINCIPAL --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://unsplash.com') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding-top: 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- SEÇÃO 1: PRODUÇÃO AGRÍCOLA --- */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-        }
-
-        /* --- SEÇÃO 2: SUSTENTABILIDADE --- */
-        .sustainable-section {
-            background-color: var(--white);
-        }
-        .split-container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        .split-text, .split-image {
-            flex: 1;
-            min-wIdth: 300px;
-        }
-        .split-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .split-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        .split-text ul {
-            list-style-position: inside;
-            margin-top: 15px;
-        }
-        .split-text li {
-            margin-bottom: 10px;
-        }
-
-        /* --- SEÇÃO 3: DESAFIOS AMBIENTAIS --- */
-        .bg-dark-section {
-            background-color: #e0f2f1;
-        }
-        .danger-card i {
-            color: var(--danger);
-        }
-
-        /* --- SEÇÃO 4: SOLUÇÕES E DIFERENCIAIS (QUIZ / CALCULADORA) --- */
-        .interactive-box {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: 30px;
-        }
-        .quiz-option {
-            display: block;
-            background: var(--light);
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.2s;
-            border: 1px solid #ddd;
-        }
-        .quiz-option:hover {
-            background: var(--secondary);
-            color: var(--white);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* --- SEÇÃO 5: CONTATO --- */
-        .contact-section {
-            background-color: var(--white);
-        }
-        .contact-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- RODAPÉ --- */
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 30px 0;
-            font-size: 0.9rem;
-        }
-
-        /* --- ANIMAÇÕES E RESPONSIVIDADE --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                padding: 20px;
-                box-shadow: 0 5px 5px rgba(0,0,0,0.1);
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-content h1 {
-                font-size: 2.3rem;
-            }
-            .split-container {
-                flex-direction: column-reverse;
-            }
-        }
-    </style>
+    <title>Sustentabilidade - Agrinho 2026</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- CABEÇALHO & WIREFRAME DE NAVEGAÇÃO -->
+    <!-- Menu de Navegação -->
     <header>
         <div class="container navbar">
-            <div class="logo">
-                <i class="fa-solid fa-leaf"></i> AgroSustentável
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#producao">Produção</a></li>
-                <li><a href="#sustentabilidade">Sustentabilidade</a></li>
-                <li><a href="#desafios">Desafios</a></li>
-                <li><a href="#solucoes">Soluções & Futuro</a></li>
-                <li><a href="#interativo">Ferramentas</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+            <a href="#" class="logo">🚜 Agrinho 2026</a>
+            <button class="menu-toggle" aria-expanded="false">☰</button>
+            <nav class="nav-menu">
+                <a href="#pilares">Pilares</a>
+                <a href="#praticas">Práticas Sustentáveis</a>
+                <a href="#calculadora">Calculadora</a>
+                <a href="#quiz">Quiz Interativo</a>
+            </nav>
         </div>
     </header>
 
-    <!-- PÁGINA INICIAL (HERO BANNER) -->
-    <section id="inicio" class="hero">
+    <!-- Banner Principal -->
+    <section class="hero">
         <div class="container hero-content">
-            <h1>Alimentando o Mundo de Forma Sustentável</h1>
-            <p>Conheça o impacto do agronegócio na economia brasileira e como a tecnologia aliada à preservação ambiental está desenhando o futuro do nosso planeta.</p>
-            <a href="#producao" class="btn">Explorar Conteúdo</a>
+            <h1>Sustentabilidade no Campo</h1>
+            <p>Conheça as práticas e tecnologias que transformam o agronegócio em um aliado da preservação ambiental, garantindo o alimento de amanhã.</p>
+            <a href="#praticas" class="btn">Explorar Práticas</a>
         </div>
     </section>
 
-    <!-- SEÇÃO 1: PRODUÇÃO AGRÍCOLA -->
-    <section id="producao">
-        <div class="container">
-            <h2 class="section-title">Produção Agrícola e Economia</h2>
+    <main class="container">
+        
+        <!-- Seção 1: Pilares da Sustentabilidade -->
+        <section id="pilares">
+            <h2 class="section-title">Os 3 Pilares do Agro Sustentável</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🌱 Ambiental</h3>
+                    <p>Preservação da biodiversidade, proteção de nascentes, combate à erosão do solo e redução da emissão de gases poluentes.</p>
+                </div>
+                <div class="card">
+                    <h3>💰 Econômico</h3>
+                    <p>Produzir mais utilizando menos recursos. A eficiência no uso de insumos reduz custos e garante a viabilidade do negócio.</p>
+                </div>
+                <div class="card">
+                    <h3>👥 Social</h3>
+                    <p>Valorização do trabalhador rural, fixação do homem no campo com qualidade de vida e desenvolvimento das comunidades locais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Práticas com Divisão Visual -->
+        <section id="praticas" class="sustainable-section">
+            <h2 class="section-title">Tecnologias Básicas Aplicadas</h2>
+            
+            <div class="split-container">
+                <div class="split-text">
+                    <h3>Inovações que Protegem o Planeta</h3>
+                    <p>A agricultura moderna utiliza a ciência para produzir em harmonia com os ecossistemas nativos. Destacam-se:</p>
+                    <ul>
+                        <li><strong>Plantio Direto:</strong> Cultivo sobre a palhada anterior, protegendo o solo contra a chuva e o sol.</li>
+                        <li><strong>Rotação de Culturas:</strong> Alternar espécies de plantas na mesma área para quebrar o ciclo de pragas e repor nutrientes.</li>
+                        <li><strong>Agricultura de Precisão:</strong> Uso de drones e sensores para aplicar água e fertilizantes apenas onde é necessário.</li>
+                    </ul>
+                </div>
+                <div class="split-image">
+                    <img src="https://picsum.photos" alt="Plantação sustentável sob monitoramento tecnológico">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Calculadora Ecológica Interativa -->
+        <section id="calculadora" class="bg-dark-section">
+            <h2 class="section-title">Calculadora de Economia Hídrica</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Descubra quantos litros de água o Manejo Inteligente de Irrigação economiza com base no tamanho da sua propriedade.</p>
+            
+            <div class="interactive-box">
+                <div class="form-group">
+                    <label for="hectares">Tamanho da área de cultivo (em hectares):</label>
+                    <input type="number" id="hectares" min="1" placeholder="Ex: 15">
+                </div>
+                <button id="btn-calcular" class="btn">Calcular Impacto</button>
+                
+                <div id="resultado-calculo" style="margin-top: 20px; font-weight: bold; color: var(--primary-dark); text-align: center;"></div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Quiz Pedagógico -->
+        <section id="quiz">
+            <h2 class="section-title">Teste seus Conhecimentos</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Responda à pergunta abaixo para avaliar seu aprendizado sobre o campo:</p>
+            
+            <div class="interactive-box">
+                <h3>Qual das práticas abaixo ajuda a evitar diretamente a erosão (desgaste) do solo provocado pelas chuvas?</h3>
+                <div class="quiz-container">
+                    <button class="quiz-option" data-correto="false">A) Uso excessivo de tratores pesados em solo molhado.</button>
+                    <button class="quiz-option" data-correto="true">B) Sistema de Plantio Direto mantendo a palhada na terra.</button>
+                    <button class="quiz-option" data-correto="false">C) Queima dos restos de folhagens após a colheita.</button>
+                    <button class="quiz-option" data-correto="false">D) Monocultura contínua da mesma planta por vários anos.</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
