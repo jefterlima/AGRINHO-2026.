@@ -1,251 +1,214 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// Aguarda o carregamento completo do DOM para garantir estabilidade na execução
+document.addEventListener("DOMContentLoaded", () => {
+    inicializarMenuMobile();
+    inicializarLinksAtivos();
+    inicializarAnimacaoScroll();
+    inicializarQuizInterativo();
+    inicializarValidacaoFormulario();
+});
 
-    <!-- Cabeçalho e Menu Responsivo -->
-    <header class="cabecalho">
-        <div class="logo">Agrinho 2026</div>
-        <button class="btn-menu" aria-expanded="false" aria-label="Abrir menu">☰</button>
-        <nav class="menu-nav">
-            <a href="#sobre">Sobre</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#inscricao">Inscrição</a>
-        </nav>
-    </header>
+/**
+ * 1. CONTROLE DO MENU RESPONSIVO (INTERATIVIDADE)
+ * Gerencia a abertura e fechamento do menu hamburguer em dispositivos móveis.
+ */
+function inicializarMenuMobile() {
+    const botaoMenu = document.querySelector(".menu-toggle");
+    const menuNavegacao = document.querySelector(".nav-menu");
 
-    <main>
-        <!-- Seção Banner com Animação -->
-        <section id="sobre" class="banner animar-scroll">
-            <h1>Inovação e Sustentabilidade no Campo</h1>
-            <p>Conectando a educação ao futuro do agronegócio.</p>
-        </section>
+    if (botaoMenu && menuNavegacao) {
+        botaoMenu.addEventListener("click", () => {
+            menuNavegacao.classList.toggle("menu-ativo");
+            
+            // Define o estado de acessibilidade do botão para leitores de tela
+            const estaAberto = menuNavegacao.classList.contains("menu-ativo");
+            botaoMenu.setAttribute("aria-expanded", estaAberto);
+            
+            // Altera visualmente o caractere do botão conforme o estado
+            botaoMenu.innerHTML = estaAberto ? "✕" : "☰";
+        });
 
-        <!-- Seção de Conteúdo com Animação -->
-        <section id="projetos" class="conteudo animar-scroll">
-            <h2>Nossos Pilares</h2>
-            <div class="cards">
-                <div class="card">Tecnologia Agrícola</div>
-                <div class="card">Preservação Ambiental</div>
-                <div class="card">Desenvolvimento Social</div>
-            </div>
-        </section>
-
-        <!-- Seção do Formulário com Validação -->
-        <section id="inscricao" class="formulario-secao animar-scroll">
-            <h2>Participe do Agrinho 2026</h2>
-            <form id="form-agrinho" class="formulario">
-                <div class="grupo-form">
-                    <label for="nome">Nome Completo:</label>
-                    <input type="text" id="nome" placeholder="Digite seu nome">
-                </div>
-                <div class="grupo-form">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" placeholder="seu@email.com">
-                </div>
-                <button type="submit" class="btn-enviar">Enviar Inscrição</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- Vinculação do arquivo Javascript -->
-    <script src="script.js"></script>
-</body>
-</html>
-/* Configurações Globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f4f7f5;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Cabeçalho e Menu */
-.cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: #2e7d32;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.btn-menu {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.menu-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.menu-nav a:hover {
-    color: #a5d6a7;
-}
-
-/* Seções e Layout */
-section {
-    padding: 80px 5%;
-    text-align: center;
-}
-
-.banner {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos') no-repeat center/cover;
-    color: white;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.banner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    flex: 1;
-    min-width: 250px;
-    max-width: 350px;
-}
-
-/* Formulário e Validações */
-.formulario-secao {
-    background-color: #e8f5e9;
-}
-
-.formulario {
-    max-width: 500px;
-    margin: 30px auto 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    text-align: left;
-}
-
-.grupo-form {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.grupo-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.grupo-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-/* Estilos de Erro gerados pelo JS */
-.input-erro {
-    border-color: #d32f2f !important;
-    background-color: #ffebee;
-}
-
-.mensagem-erro {
-    color: #d32f2f;
-    font-size: 0.85rem;
-    margin-top: 5px;
-}
-
-.btn-enviar {
-    width: 100%;
-    padding: 12px;
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-enviar:hover {
-    background-color: #1b5e20;
-}
-
-/* Lógica de Animação de Scroll (CSS + JS) */
-.animar-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.elemento-visivel {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsividade para Celulares */
-@media (max-width: 768px) {
-    .btn-menu {
-        display: block;
+        // Fecha o menu automaticamente quando o usuário clica em um link de ancoragem
+        const linksMenu = menuNavegacao.querySelectorAll("a");
+        linksMenu.forEach(link => {
+            link.addEventListener("click", () => {
+                menuNavegacao.classList.remove("menu-ativo");
+                botaoMenu.innerHTML = "☰";
+                botaoMenu.setAttribute("aria-expanded", "false");
+            });
+        });
     }
+}
 
-    .menu-nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: #2e7d32;
-        padding: 20px;
-        text-align: center;
+/**
+ * 2. MARCADOR DE LINK ATIVO (EXPERIÊNCIA DO USUÁRIO)
+ * Identifica a seção visível na tela e adiciona a classe .active no item do menu correspondente.
+ */
+function inicializarLinksAtivos() {
+    const secoes = document.querySelectorAll("section, header");
+    const linksNav = document.querySelectorAll(".nav-menu a");
+
+    window.addEventListener("scroll", () => {
+        let secaoAtualId = "";
+        const topoPagina = window.scrollY + 100; // Deslocamento para compensar o menu fixo
+
+        secoes.forEach(secao => {
+            const topoSecao = secao.offsetTop;
+            const alturaSecao = secao.offsetHeight;
+
+            if (topoPagina >= topoSecao && topoPagina < topoSecao + alturaSecao) {
+                secaoAtualId = secao.getAttribute("id");
+            }
+        });
+
+        linksNav.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${secaoAtualId}`) {
+                link.classList.add("active");
+            }
+        });
+    });
+}
+
+/**
+ * 3. ANIMAÇÃO DE SURGIMENTO AO ROLAR A PÁGINA (COMPORTAMENTO DINÂMICO)
+ * Utiliza a API IntersectionObserver para disparar efeitos visuais do CSS com alta performance.
+ */
+function inicializarAnimacaoScroll() {
+    // Seleciona componentes-chave para receberem o efeito de fade-in estruturado
+    const elementosParaAnimar = document.querySelectorAll(".card, .interactive-box, .split-text, .split-image");
+
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add("elemento-visivel");
+                observador.unobserve(entrada.target); // Desativa observação pós-exibição para economizar hardware
+            }
+        });
+    }, { 
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px" // Dispara levemente antes do elemento surgir por completo
+    });
+
+    elementosParaAnimar.forEach(elemento => {
+        elemento.classList.add("animar-scroll"); // Garante que a classe base do CSS seja injetada
+        observador.observe(elemento);
+    });
+}
+
+/**
+ * 4. CAIXA INTERATIVA DO QUIZ (FUNCIONALIDADE INTELIGENTE)
+ * Processa as respostas do quiz sobre sustentabilidade em tempo real.
+ */
+function inicializarQuizInterativo() {
+    const opcoesQuiz = document.querySelectorAll(".quiz-option");
+
+    opcoesQuiz.forEach(opcao => {
+        opcao.addEventListener("click", function() {
+            const containerQuiz = this.parentElement;
+            
+            // Bloqueia interações adicionais caso a pergunta já tenha sido respondida
+            if (containerQuiz.classList.contains("respondido")) return;
+            containerQuiz.classList.add("respondido");
+
+            const ehCorreta = this.getAttribute("data-correto") === "true";
+
+            if (ehCorreta) {
+                this.style.backgroundColor = "var(--primary)";
+                this.style.color = "var(--white)";
+                this.style.borderColor = "var(--primary)";
+                this.innerHTML += " ✓ (Correto!)";
+            } else {
+                this.style.backgroundColor = "var(--danger)";
+                this.style.color = "var(--white)";
+                this.style.borderColor = "var(--danger)";
+                this.innerHTML += " ✕ (Incorreto)";
+
+                // Destaca automaticamente a alternativa certa para fins pedagógicos
+                const alternativaCorreta = containerQuiz.querySelector("[data-correto='true']");
+                if (alternativaCorreta) {
+                    alternativaCorreta.style.backgroundColor = "var(--secondary)";
+                    alternativaCorreta.style.color = "var(--white)";
+                }
+            }
+        });
+    });
+}
+
+/**
+ * 5. VALIDAÇÃO INTELIGENTE DE FORMULÁRIO
+ * Analisa os campos antes do envio, prevenindo submissões vazias ou inválidas.
+ */
+function inicializarValidacaoFormulario() {
+    const formulario = document.querySelector("#form-agrinho") || document.querySelector("form");
+
+    if (!formulario) return;
+
+    formulario.addEventListener("submit", (evento) => {
+        evento.preventDefault(); // Bloqueia o recarregamento padrão da página
+
+        const camposInput = formulario.querySelectorAll("input, textarea, select");
+        let formularioValido = true;
+
+        camposInput.forEach(campo => {
+            limparErroCampo(campo);
+
+            // Validação de campos obrigatórios vazios
+            if (campo.hasAttribute("required") && !campo.value.trim()) {
+                exibirErroCampo(campo, "Este campo é obrigatório.");
+                formularioValido = false;
+            }
+            // Validação estrutural para strings de e-mail
+            else if (campo.type === "email" && campo.value.trim() !== "") {
+                const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!regexEmail.test(campo.value)) {
+                    exibirErroCampo(campo, "Insira um endereço de e-mail válido.");
+                    formularioValido = false;
+                }
+            }
+        });
+
+        if (formularioValido) {
+            const botaoEnvio = formulario.querySelector("button[type='submit']");
+            if (botaoEnvio) {
+                const textoOriginal = botaoEnvio.textContent;
+                botaoEnvio.textContent = "Enviando inscrição...";
+                botaoEnvio.disabled = true;
+
+                // Simula um delay de processamento antes de limpar a tela
+                setTimeout(() => {
+                    alert("Inscrição para o Agrinho 2026 processada com sucesso!");
+                    formulario.reset();
+                    botaoEnvio.textContent = textoOriginal;
+                    botaoEnvio.disabled = false;
+                }, 1500);
+            }
+        }
+    });
+}
+
+/**
+ * FUNÇÕES AUXILIARES PARA GERENCIAMENTO DE ERROS VISUAIS
+ */
+function exibirErroCampo(campo, mensagem) {
+    campo.classList.add("input-erro");
+    
+    const grupoForm = campo.closest(".form-group") || campo.parentElement;
+    let containerErro = grupoForm.querySelector(".mensagem-erro");
+    
+    if (!containerErro) {
+        containerErro = document.createElement("span");
+        containerErro.className = "mensagem-erro";
+        grupoForm.appendChild(containerErro);
     }
+    containerErro.textContent = mensagem;
+}
 
-    .menu-nav a {
-        margin: 15px 0;
-    }
-
-    .menu-ativo {
-        display: flex;
+function limparErroCampo(campo) {
+    campo.classList.remove("input-erro");
+    
+    const grupoForm = campo.closest(".form-group") || campo.parentElement;
+    const containerErro = grupoForm.querySelector(".mensagem-erro");
+    if (containerErro) {
+        containerErro.remove();
     }
 }
